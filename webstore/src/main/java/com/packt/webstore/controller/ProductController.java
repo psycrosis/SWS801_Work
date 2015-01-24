@@ -37,9 +37,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping("/{category}")
-	public String getProductsByCategory(@PathVariable("category") String productCategory, Model model) 
-	//not normal parameter path variabel comes from users request uri
-	{
+	public String getProductsByCategory(@PathVariable("category") String productCategory, Model model) {
 		model.addAttribute("products", productService.getProductsByCategory(productCategory));
 		return "products";
 	}
