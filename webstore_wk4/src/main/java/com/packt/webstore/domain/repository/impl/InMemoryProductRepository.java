@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 
 import com.packt.webstore.domain.Product;
 import com.packt.webstore.domain.repository.ProductRepository;
-import com.packt.webstore.exception.ProductNotFoundException;
 
 @Repository
 public class InMemoryProductRepository implements ProductRepository{
@@ -32,7 +31,7 @@ public class InMemoryProductRepository implements ProductRepository{
 		laptop_dell.setUnitsInStock(1000);
 		
 		Product tablet_Nexus = new Product("P1236","Nexus 7", new BigDecimal(300));
-		tablet_Nexus.setDescription("Google Nexus 7 is the lightest 7 inch tablet With a quad-core Qualcomm Snapdragon™ S4 Pro processor");
+		tablet_Nexus.setDescription("Google Nexus 7 is the lightest 7 inch tablet With a quad-core Qualcomm Snapdragonï¿½ S4 Pro processor");
 		tablet_Nexus.setCategory("Tablet");
 		tablet_Nexus.setManufacturer("Google");
 		tablet_Nexus.setUnitsInStock(1000);
@@ -58,7 +57,7 @@ public class InMemoryProductRepository implements ProductRepository{
 		}
 		
 		if(productById == null){
-			throw new ProductNotFoundException("No products found with the product id: "+ productId);
+			throw new IllegalArgumentException("No products found with the product id: "+ productId);
 		}
 		
 		return productById;
@@ -102,9 +101,11 @@ public class InMemoryProductRepository implements ProductRepository{
 		
 		return productsByCategory;
 	}
-	
-	public void addProduct(Product product) {
-		   listOfProducts.add(product);
-	}
 
+	@Override
+	public void addProduct(Product product) 
+	{
+		listOfProducts.add(product);
+		
+	}
 }
