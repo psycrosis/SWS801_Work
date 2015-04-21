@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-@RequestMapping("/books")
+@RequestMapping("/books4")
 public class BookController 
 {
 

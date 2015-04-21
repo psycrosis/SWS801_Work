@@ -12,8 +12,11 @@ public class HomeController
 	public String welcome(Model model)
 	{
 		model.addAttribute("greeting","The Book Depot");
+		
 		model.addAttribute("entryLink", "Click to Enter");
-		return "forward:/welcome/greeting";
+		
+		return "welcome";
+		//return "forward:/welcome/greeting";
 	}
 	
 	@RequestMapping("/welcome/greeting")
